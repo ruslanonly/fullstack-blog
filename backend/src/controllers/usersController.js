@@ -3,7 +3,8 @@ const db = require("../database/db");
 class UsersController {
   async getUser(req, res) {
     let userId = req.params.id;
-    let q_res = await db.query("SELECT * FROM users WHERE id = $1", [userId]);
+    console.log(userId);
+    let q_res = await db.query("SELECT * FROM users WHERE id=$1", [userId]);
     let user = q_res.rows[0];
     res.json(user);
   }
@@ -19,6 +20,14 @@ class UsersController {
     let q_res = await db.query("INSERT INTO users (username, email) VALUES ($1, $2);", [username, email]);
     let newUser = q_res.rows[0];
     res.json(newUser);
+  }
+
+  async updateUser(req, res) {
+
+  }
+
+  async deleteUser(req, res) {
+
   }
 }
 

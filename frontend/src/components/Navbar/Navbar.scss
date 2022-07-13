@@ -1,0 +1,36 @@
+.navbar {
+  & {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-wrapper {
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+
+  .nav {
+    & {
+      display: flex;
+      gap: 1rem;
+    }
+
+    a {
+      color: blue;
+      text-decoration: none;
+      font-weight: bold;
+
+      &.active {
+        color: red;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

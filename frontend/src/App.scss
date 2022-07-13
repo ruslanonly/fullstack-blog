@@ -1,0 +1,18 @@
+@import url("./pages/pages.scss");
+@import url("./components//Navbar/Navbar.scss");
+
+.app {
+
+  .container {
+    margin: auto;
+    max-width: 900px;
+  }
+
+  .content-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 1rem;
+
+  }
+  
+}
