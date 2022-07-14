@@ -1,23 +1,22 @@
 const db = require("../database/db");
 
+const UsersService = require("../services/usersService");
+
 class UsersController {
   async getUser(req, res) {
     let userId = req.params.id;
-    let q_res = await db.query("SELECT * FROM users WHERE id=$1", [userId]);
-    let user = q_res.rows[0];
+    let user = await UsersService.getUser(userId);
     res.json(user);
   }
 
   async getUsers(req, res) {
-    let q_res = await db.query("SELECT * FROM users");
-    let users = q_res.rows;
+    let users = await UsersService.getUsers();
     res.json(users);
   }
 
   async createUser(req, res) {
     let {username, email} = req.body;
-    let q_res = await db.query("INSERT INTO users (username, email) VALUES ($1, $2);", [username, email]);
-    let newUser = q_res.rows[0];
+    let newUser = await UsersService.createUser(username, email);
     res.json(newUser);
   }
 

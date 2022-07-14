@@ -5,7 +5,7 @@ import multiavatar from '@multiavatar/multiavatar';
 import { Link } from "react-router-dom";
 import { Spinner, useBoolean } from '@chakra-ui/react';
 
-import CreateUserButton from './CreateUserButton';
+import CreateUserDrawer from './CreateUserDrawer';
 
 import { IUser } from "../../types";
 
@@ -65,8 +65,8 @@ export default function UsersPage() {
               <UserLink key={user.id} {...user}/>
             ))
           }
-          <CreateUserButton/>
         </div>
+        <CreateUserDrawer/>
       </div>
     )
   } else {

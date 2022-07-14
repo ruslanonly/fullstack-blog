@@ -2,7 +2,6 @@
   "name": "blog-backend",
   "version": "1.0.0",
   "description": "backend side of FullStack Blog App",
-  "private": true,
   "main": "app.js",
   "scripts": {
     "start": "node ./src/app.js",

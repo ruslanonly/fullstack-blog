@@ -44,6 +44,7 @@ export default function UserPage() {
     });
     
   }, []);
+  
   if (loaded) {
     if (user) {
       return (

@@ -22,6 +22,7 @@ function App() {
             <Route path='/posts' element={<h1>Posts Page</h1>}/>
             <Route path='/' element={<HomePage/>}/>
             <Route path='*' element={<ErrorPage/>}/>
+            
           </Routes>
         </div>
       </div>
