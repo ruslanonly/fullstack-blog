@@ -3,7 +3,6 @@ const db = require("../database/db");
 class UsersController {
   async getUser(req, res) {
     let userId = req.params.id;
-    console.log(userId);
     let q_res = await db.query("SELECT * FROM users WHERE id=$1", [userId]);
     let user = q_res.rows[0];
     res.json(user);

@@ -1,0 +1,29 @@
+.page.page-users {
+  .users {
+    & {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .user-card {
+      & {
+        display: grid;
+        grid-template: auto 1fr;
+        justify-items: center;
+        gap: .5rem;
+      }
+      
+      .avatar {
+        width: 5rem;
+        height: 5rem;
+      }
+
+      .username {
+        font-weight: bold;
+        color: var(--color-gray-700);
+      }
+    }
+  }
+}

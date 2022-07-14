@@ -1,9 +1,8 @@
+@import url("./UserPage/UserPage.scss");
+@import url("./UsersPage/UsersPage.scss");
+
 .page {
   & {
     width: 100%;
-  }
-
-  &.page-user {
-    background: blue;
   }
 }

@@ -10,7 +10,6 @@ class postController {
   
   async createPost(req, res, next) {
     let { title, content, user_id, username} = req.body;  
-    console.log(title, content, user_id, username);
     let q_res = await db.query("INSERT INTO posts(title, content, user_id, author, data_created) VALUES($1, $2, $3, $4, NOW()) RETURNING *", [title, content, user_id, username]);
     res.json(q_res.rows[0]);
   }
