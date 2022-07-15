@@ -1,5 +1,7 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext } from 'react'
 import axios, { AxiosResponse } from 'axios';
+
+import { UpdateUsersContext } from './UpdateUsersContext';
 
 import { 
   Stack,
@@ -19,12 +21,12 @@ import {
 import { AddIcon } from '@chakra-ui/icons'
 
 import { IUser } from '../../types';
-import { useIsPresent } from 'framer-motion';
 
 export default function CreateUserDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const usernameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
+  const changeUpdateUsers = useContext(UpdateUsersContext);
 
   const onCreateNewUser = async () => {
     axios({
@@ -38,6 +40,7 @@ export default function CreateUserDrawer() {
     .then((response: AxiosResponse<IUser>) => {
       console.log(response);
       onClose();
+      changeUpdateUsers(true);
     })
     .catch((error) => console.log(error));
   }

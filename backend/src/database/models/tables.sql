@@ -16,3 +16,5 @@ CREATE TABLE posts (
 
 INSERT INTO users (username, email) VALUES ('ruslanonly', 'rzaevruslanonly@gmail.gmail');
 INSERT INTO posts(title, content, user_id, author, data_created) VALUES('blog title', 'blog content', 1, 'ruslanonly', NOW())
+
+ SELECT posts.title, posts.content, posts.data_created, users.username FROM posts INNER JOIN users ON posts.user_id=users.id WHERE posts.id = 9;

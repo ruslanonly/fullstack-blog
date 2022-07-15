@@ -7,6 +7,8 @@ import { Spinner, useBoolean } from '@chakra-ui/react';
 
 import CreateUserDrawer from './CreateUserDrawer';
 
+import { UpdateUsersContext } from './UpdateUsersContext';
+
 import { IUser } from "../../types";
 
 type UserLinkProps = {
@@ -42,31 +44,37 @@ function UserLink(props: UserLinkProps) : JSX.Element {
 
 export default function UsersPage() {
   let [loaded, setLoaded] = useBoolean(false); 
-  const [users, setUsers] = useState<IUser[]>([] as IUser[]);
+  let [users, setUsers] = useState<IUser[]>([] as IUser[]);
+  const [updateUsers, setUpdateUsers] = useState(true);
+  const changeUpdateUsers = (value: boolean) => setUpdateUsers(value);
 
   useEffect(() => {
     axios.get("http://localhost:5000/api/users")
     .then((response : AxiosResponse) => {
       setUsers(response.data)
       setLoaded.on();
+      setUpdateUsers(false);
     })
     .catch((reason : any) => {
       console.log(reason);
       setUsers([]);
+      setUpdateUsers(false);
     })
-  }, []);
+  }, [updateUsers]);
 
   if (loaded) {
     return (
       <div className='page page-users'>
-        <div className="users">
-          {
-            users.map((user) => (
-              <UserLink key={user.id} {...user}/>
-            ))
-          }
-        </div>
-        <CreateUserDrawer/>
+        <UpdateUsersContext.Provider value={changeUpdateUsers}>
+          <div className="users">
+            {
+              users.map((user) => (
+                <UserLink key={user.id} {...user}/>
+              ))
+            }
+          </div>
+          <CreateUserDrawer/>
+        </UpdateUsersContext.Provider>
       </div>
     )
   } else {

@@ -23,6 +23,12 @@ class postController {
     let posts = await PostsService.getAllPosts();
     res.json(posts);
   }
+
+  async getPostUserJoin(req, res, next) {
+    let postId = req.params.id;
+    let post = await PostsService.getPostUserJoin(postId);
+    res.json(post);
+  }
 }
 
 

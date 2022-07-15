@@ -23,6 +23,12 @@ class PostsService {
     let posts = q_res.rows;
     return posts;
   }
+
+  async getPostUserJoin(postId) {
+    let q_res = await db.query("SELECT posts.title, posts.content, posts.data_created, posts.likes, users.username as author FROM posts INNER JOIN users ON posts.user_id=users.id WHERE posts.id = $1;", [postId]);
+    let post = q_res.rows[0];
+    return post;
+  }
 }
 
 module.exports = new PostsService();

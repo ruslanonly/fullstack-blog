@@ -8,6 +8,8 @@ import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
 import UserPage from './pages/UserPage/UserPage';
 import UsersPage from './pages/UsersPage/UsersPage';
+import PostPage from './pages/PostPage/PostPage';
+import PostsPage from './pages/PostsPage/PostsPage';
 
 function App() {
   return (
@@ -18,8 +20,8 @@ function App() {
           <Routes>
             <Route path='/user/:id' element={<UserPage />}/>
             <Route path='/users' element={<UsersPage />}/>
-            <Route path='/post/:id' element={<h1>Post Page</h1>}/>
-            <Route path='/posts' element={<h1>Posts Page</h1>}/>
+            <Route path='/post/:id' element={<PostPage />}/>
+            <Route path='/posts' element={<PostsPage />}/>
             <Route path='/' element={<HomePage/>}/>
             <Route path='*' element={<ErrorPage/>}/>
             
